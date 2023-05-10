@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 
-const result = {}
+const result = []
 
 //function which scrapes the selected stackoverflow pages
 const getAnswerFromQuestion = async (website, page) => {
@@ -18,7 +18,11 @@ const getAnswerFromQuestion = async (website, page) => {
         return answer
     })
 
-    result[question] = verifiedAnswer
+    let newEntry = {
+        question: question,
+        answer: verifiedAnswer
+    }
+    result.push(newEntry)
     // console.log('\nQ:\n', question)
     // console.log('\nAns:\n', verifiedAnswer)
 }

@@ -17,7 +17,7 @@ app.get('/', async (req, res) => {
 
     const result = await askPuppeteer(query)
     console.log(result)
-    res.send('hi')
+    res.json(result)
 })
 
 
