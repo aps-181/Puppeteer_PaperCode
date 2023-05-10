@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer');
-
+require("dotenv").config()
 const result = []
 
 //function which scrapes the selected stackoverflow pages
@@ -28,7 +28,21 @@ const getAnswerFromQuestion = async (website, page) => {
 }
 
 const askPuppeteer = async (query) => {
-    const browser = await puppeteer.launch()
+    if (query == undefined || query.length < 5) return result
+
+
+    const browser = await puppeteer.launch({
+        args: [
+            "--diable-setuid-sandbox",
+            "--no-sandbox",
+            "--single-process",
+            "--no-zygote"
+        ],
+        executablePath:
+            process.env.NODE_ENV === "production"
+                ? process.env.PUPPETEER_EXECUTABLE_PATH
+                : puppeteer.executablePath(),
+    })
 
     //question you want to ask
 

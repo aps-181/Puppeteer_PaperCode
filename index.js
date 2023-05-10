@@ -10,11 +10,9 @@ app.listen(PORT, () => {
     console.log("Listening on Port: ", PORT)
 })
 
-app.get('/', async (req, res) => {
-    // const query = " error: 'b' undeclared (first use in this function)"
+app.get('/scrape', async (req, res) => {
 
     const { query } = req.query
-
     const result = await askPuppeteer(query)
     console.log(result)
     res.json(result)
