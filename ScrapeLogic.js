@@ -115,6 +115,7 @@ const askPuppeteer = async (query) => {
         })();
     } catch (e) {
         console.error(e)
+        return e;
     } finally {
         await browser.close();
         return result
