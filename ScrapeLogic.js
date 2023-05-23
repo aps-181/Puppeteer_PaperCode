@@ -115,7 +115,6 @@ const askPuppeteer = async (query) => {
         })();
     } catch (e) {
         console.error(e)
-        return e;
     } finally {
         await browser.close();
         return result
@@ -123,6 +122,8 @@ const askPuppeteer = async (query) => {
 }
 
 
+
+module.exports = { askPuppeteer }
 
 module.exports = { askPuppeteer }
 
