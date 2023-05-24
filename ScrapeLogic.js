@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 require("dotenv").config()
-const result = []
+let result = []
 
 //function which scrapes the selected stackoverflow pages
 const getAnswerFromQuestion = async (website, page) => {
@@ -28,7 +28,7 @@ const getAnswerFromQuestion = async (website, page) => {
 }
 
 const askPuppeteer = async (query) => {
-    if (query == undefined || query.length < 5) return result
+    if (query == undefined || query.length < 5) return "no response"
 
 
     const browser = await puppeteer.launch({
@@ -51,6 +51,7 @@ const askPuppeteer = async (query) => {
     const googleUrl = `https://www.google.com/search?q=${queryUrl}+site%3Astackoverflow.com`;
     console.log(googleUrl)
     console.log('queryURL: ', queryUrl)
+    result = []
     try {
         const page = await browser.newPage();
 
@@ -125,5 +126,4 @@ const askPuppeteer = async (query) => {
 
 module.exports = { askPuppeteer }
 
-module.exports = { askPuppeteer }
 
