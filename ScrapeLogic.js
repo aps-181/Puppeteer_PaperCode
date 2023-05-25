@@ -28,7 +28,7 @@ const getAnswerFromQuestion = async (website, page) => {
 }
 
 const askPuppeteer = async (query) => {
-    if (query == undefined || query.length < 5) return "no response"
+    if (query == undefined || query.length < 5) return []
 
 
     const browser = await puppeteer.launch({
